@@ -168,7 +168,7 @@
                     <!-- HEADER -->
                     <header class="chat-col-header">
                         <div class="chat-col-header-text">
-                            <img class="avatar-img" src="css/img/avatar_1.jpg" alt="">
+                            <img class="avatar-img" :src="curContactIndex.avatar" alt="">
                             <div class="contact-name">
                                 <h3>{{ contacts[curContactIndex].name }}</h3>
                                 <div>
@@ -192,8 +192,10 @@
                     <!-- /HEADER -->
                     <!-- MAIN -->
                     <main class="chat-col-main" >
-                        <div class="sms-container" v-for="(message, index) in contacts[curContactIndex].message">
-                            <div :class="{'green-sms': status === 'sent', 'white-sms': status === 'received'}">
+                        <div class="sms-wrapper" v-for="(messages,index) in contacts[curContactIndex].messages">
+                            <div class="message" :class=" messages.status === 'sent' ? 'sms-container-white' : 'sms-container' ">
+                                <p> {{ messages.message }}</p>
+                                
                                 <!-- DROPDOWN -->
                                 <div class="dropdown">
                                     <div class="chevron-dropdown">
@@ -203,13 +205,14 @@
                                             <div><a href="">cancella messaggio</a></div>
 
                                         </div>
+                                        <div class="sms-time">{{ messages.date }}</div>
                                     </div>
                                     <!-- /DROPDOWN -->
 
                                 </div>
-                                <p> {{ contact[curContactIndex].messages.message }} </p>
+                                
 
-                                <div class="sms-time">14:50</div>
+                               
                             </div>
 
 

@@ -55,7 +55,7 @@ body {
 /* FRIENDS COL */
 .friends-col {
     
-    height: 80vh;
+    height: 82vh;
     min-width: 35%;
 }
 
@@ -160,7 +160,7 @@ body {
 .friends-chat-part{
     overflow-y: scroll;
     background-color: white;
-    height: calc(100% - 70px - 50px);
+    /* height: calc(100% - 70px - 50px); */
 }
 
 .friends-chat-text span{
@@ -287,8 +287,26 @@ body {
   
    
 }
-.sms-container-white {
+
+.sms-container p {
+    background-color: var(--green-sms-col);
+    width: 50%;
+    border-radius:10px;
+    padding: .5rem;
+    display: inline-block;
+
+}
+
+
+.sms-container-white p {
     padding: 1rem;
+    background-color: white;
+    width: 50%;
+    border-radius: 10px;
+    padding: 0.5rem;
+    display: inline-block;
+    margin-top: 1rem;
+    margin-left: 1rem;
 }
 .chat-col-main{
     overflow-y: scroll;

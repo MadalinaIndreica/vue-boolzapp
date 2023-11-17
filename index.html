@@ -66,12 +66,12 @@
 
 
                         <div class="friends-chat-part">
-                            <div class="friends-chat"
-                            v-for="(contact, index) in contacts" :class="curContactIndex === index ? 'active' : '' " @click="contactClicked(index)"
-                            v-show="contact.visible">
+                            <div class="friends-chat" v-for="(contact, index) in contacts"
+                                :class="curContactIndex === index ? 'active' : '' " @click="contactClicked(index)"
+                                v-show="contact.visible">
                                 <img class="avatar-img" :src="getImagePath(contact.avatar)" alt="">
 
-                                <div class="friends-chat-text" >
+                                <div class="friends-chat-text">
                                     <h3>{{ contact.name }}</h3>
                                     <span>ultimo messaggio inviato</span>
                                 </div>
@@ -169,7 +169,8 @@
                     <!-- HEADER -->
                     <header class="chat-col-header">
                         <div class="chat-col-header-text">
-                            <img class="avatar-img" :src="`css/img/avatar${contacts[curContactIndex].avatar}.jpg`" alt="">
+                            <img class="avatar-img" :src="`css/img/avatar${contacts[curContactIndex].avatar}.jpg`"
+                                alt="">
                             <div class="contact-name">
                                 <h3>{{ contacts[curContactIndex].name }}</h3>
                                 <div>
@@ -192,33 +193,37 @@
                     </header>
                     <!-- /HEADER -->
                     <!-- MAIN -->
-                    <main class="chat-col-main" >
+                    <main class="chat-col-main">
                         <div class="sms-wrapper" v-for="(messages,index) in contacts[curContactIndex].messages">
-                            <div class="message" :class=" messages.status === 'sent' ? 'sms-container-white' : 'sms-container' ">
-                                <p> {{ messages.message }}</p>
-                                
+                            <div class="message"
+                                :class=" messages.status === 'sent' ? 'sms-container-white' : 'sms-container' ">
+
+                                <p> {{ messages.message }}
+                                </p>
+                                <div class="sms-time">{{ messages.date }}</div>
+
                                 <!-- DROPDOWN -->
                                 <div class="dropdown">
                                     <div class="chevron-dropdown">
                                         <i class="fa-solid fa-chevron-down"></i>
                                         <div class="dropdown-content">
-                                            <div><a href="">info messaggio</a></div>
-                                            <div><a href="">cancella messaggio</a></div>
+                                            <div><span>info messaggio</span></div>
+                                            <div @click="deleteMessage()"><span>cancella messaggio</span></div>
 
                                         </div>
-                                        <div class="sms-time">{{ messages.date }}</div>
+
                                     </div>
                                     <!-- /DROPDOWN -->
 
                                 </div>
-                                
 
-                               
+
+
                             </div>
 
 
                         </div>
-                    
+
 
                     </main>
                     <!-- /MAIN -->
@@ -228,8 +233,8 @@
                             <i class="fa-regular fa-face-smile"></i>
                         </a>
 
-                        <input class="input-text-footer" type="text" id="newMessage" v-model="newMessage" @keyup.enter="addNewMessage()"
-                        placeholder="scrivi un messaggio">
+                        <input class="input-text-footer" type="text" id="newMessage" v-model="newMessage"
+                            @keyup.enter="addNewMessage()" placeholder="scrivi un messaggio">
 
 
                         <a href="">

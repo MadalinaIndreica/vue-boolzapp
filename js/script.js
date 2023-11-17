@@ -204,6 +204,10 @@ createApp({
                 }
                 
             });
+        },
+        deleteMessage(index) {
+            this.contacts[this.curContactIndex].messages.splice(index,1);
+
         }
     }
 

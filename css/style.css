@@ -73,8 +73,8 @@ body {
 .header-icons {
     color: var(--icons-col);
     font-size: 20px;
-    letter-spacing: 5px;
-
+    letter-spacing: 15px;
+   
 }
 .header-icons a {
     color: var(--icons-col);
@@ -98,10 +98,7 @@ body {
     background-color: var(--blue-banner-col);
     display: flex;
     justify-content:flex-start;
-    padding-top: 11px;
-    padding-bottom: 11px;
-    padding-left: 5px;
-    padding-right: 5px;
+    width: 100%;
     height: 70px;
     align-items: center;
     
@@ -136,6 +133,7 @@ body {
     justify-content: space-around;
     align-items: center;
     height: 50px;
+   
 }
 .fa-magnifying-glass{
     color: var(--icons-col);
@@ -246,7 +244,7 @@ body {
 .chat-col-icons a {
     color: var(--icons-col);
     text-decoration: none;
-    letter-spacing: 5px;
+    letter-spacing: 15px;
     font-size: 20px;
 
 }
@@ -323,10 +321,23 @@ body {
    color:var(--icons-col);
 }
 .sms-time {
+    position: absolute;
    text-align:right;
    color:var(--icons-col);
-   font-size: 10px;
+   font-size: 10px; 
+   top: 53px;
+   right: 28px;
 }
+.sms-wrapper {
+    position: relative;
+}
+.sms-container-white .sms-time{
+    position: absolute;
+    top: 53px;
+    right: 312px;
+
+}
+
 /* DROPDOWN */
 .dropdown {
     position: relative;
@@ -337,7 +348,17 @@ body {
     color:var(--icons-col);
     border: none;
     text-align: right;
+    position: absolute;
+    top: -51px;
+    left: -22px;
+
     
+}
+.sms-container-white .chevron-dropdown {
+    position: absolute;
+    top: -50px;
+    left: 314px;
+
 }
 .dropdown-content {
     display: none;
@@ -352,14 +373,10 @@ body {
     padding: .5rem;
     text-align: center;
     padding-bottom: .5rem;
-  }
-  .dropdown-content div a{
-    text-decoration: none;
     color: black;
-    display: inline-block;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
+    line-height: 30px;
+  }
+
 
   
   .dropdown:hover .dropdown-content {display: block;}

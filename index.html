@@ -56,8 +56,8 @@
                         <!-- INPUT SECTION -->
                         <section class="input-block">
                             <i class="fa-solid fa-magnifying-glass "></i>
-                            <input class="input-text" type="text" id="search" name="search"
-                                placeholder="cerca o inizia una nuova chat">
+                            <input class="input-text" type="text" id="search" name="search" v-model="searchText"
+                                placeholder="cerca o inizia una nuova chat" @keyup="searchContact">
                         </section>
                         <!-- /INPUT SECTION -->
 
@@ -67,12 +67,13 @@
 
                         <div class="friends-chat-part">
                             <div class="friends-chat"
-                            v-for="(contact, index) in contacts">
+                            v-for="(contact, index) in contacts" :class="curContactIndex === index ? 'active' : '' " @click="contactClicked(index)"
+                            v-show="contact.visible">
                                 <img class="avatar-img" :src="getImagePath(contact.avatar)" alt="">
 
-                                <div class="friends-chat-text" @click="contactClicked(index)">
+                                <div class="friends-chat-text" >
                                     <h3>{{ contact.name }}</h3>
-                                    <span>Lorem ipsum dolor sit amet</span>
+                                    <span>ultimo messaggio inviato</span>
                                 </div>
                                 <div class="hour">
                                     20:40
@@ -168,7 +169,7 @@
                     <!-- HEADER -->
                     <header class="chat-col-header">
                         <div class="chat-col-header-text">
-                            <img class="avatar-img" :src="curContactIndex.avatar" alt="">
+                            <img class="avatar-img" :src="`css/img/avatar${contacts[curContactIndex].avatar}.jpg`" alt="">
                             <div class="contact-name">
                                 <h3>{{ contacts[curContactIndex].name }}</h3>
                                 <div>
@@ -217,17 +218,7 @@
 
 
                         </div>
-                        <!-- <div class="sms-container-white">
-                            <div class="white-sms">
-                                <div class="chevron">
-                                    <i class="fa-solid fa-chevron-down"></i>
-                                </div>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur maxime asperiores
-                                labore, similique non impedit assumenda expedita deserunt facilis itaque minima,
-                                nesciunt?
-                                <div class="sms-time">14:50</div>
-                            </div>
-                        </div> -->
+                    
 
                     </main>
                     <!-- /MAIN -->
@@ -236,8 +227,11 @@
                         <a href="">
                             <i class="fa-regular fa-face-smile"></i>
                         </a>
-                        <input class="input-text-footer" type="text" id="write" name="write"
-                            placeholder="scrivi un messaggio">
+
+                        <input class="input-text-footer" type="text" id="newMessage" v-model="newMessage" @keyup.enter="addNewMessage()"
+                        placeholder="scrivi un messaggio">
+
+
                         <a href="">
                             <i class="fa-solid fa-microphone"></i>
                         </a>

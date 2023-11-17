@@ -166,7 +166,8 @@ createApp({
                     ],
                 }
             ],
-            curContactIndex: 0
+            curContactIndex: 0,
+            searchText: ""
         }
         
     },
@@ -177,6 +178,32 @@ createApp({
         },
         contactClicked (index){
             this.curContactIndex = index;
+        },
+        addNewMessage (){
+            if(this.newMessage !== ""){
+            this.contacts[this.curContactIndex].messages.push({
+                date: '10/01/2020 15:51:00',
+                message: this.newMessage,
+                status: 'received'
+            });
+            setTimeout(() => this.messageReceived(), 1000)
+            this.newMessage = "";
+            }
+        },
+        messageReceived(){
+            this.contacts[this.curContactIndex].messages.push ({ message: 'ok!', status: 'sent'});
+
+        },
+        searchContact() {
+            let search = this.searchText.toLowerCase();
+            this.contacts.forEach(element => {
+                if(element.name.toLowerCase().includes(search)){
+                    element.visible = true;
+                } else {
+                    element.visible = false;
+                }
+                
+            });
         }
     }
 
